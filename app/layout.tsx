@@ -1,5 +1,11 @@
 import type React from "react"
-import type { Metadata } from "next"
+import {
+  Inter,
+  Space_Grotesk,
+  Sora,
+  Source_Serif_4,
+} from "next/font/google";
+
 
 import { Space_Grotesk } from "next/font/google"
 import { Inter } from "next/font/google"
