@@ -7,7 +7,19 @@ import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
-import { Sora, Geist, Geist_Mono, Source_Serif_4 } from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google";
+
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+});
 
 // Initialize fonts
 const geistMono = Geist_Mono({
@@ -78,7 +90,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${sora.variable} ${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${sora.variable} ${spaceGrotesk.variable} ${inter.variable}{geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+    
+    
+
+
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/assets/logotransparent.png" type="image/png" />
