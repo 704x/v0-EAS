@@ -15,6 +15,13 @@ import {
   Sora,
   Source_Serif_4,
 } from "next/font/google";
+import { Acme as V0_Font_Acme, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
+import { Acme as V0_Font_Acme, Fjalla_One as V0_Font_Fjalla_One, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
+
+// Initialize fonts
+V0_Font_Acme({ weight: ["400"] })
+V0_Font_Fjalla_One({ weight: ["400"] })
+V0_Font_Source_Serif_4({ weight: ["200","300","400","500","600","700","800","900"] })
 
 // Initialize fonts once
 const geistSans = Geist({
