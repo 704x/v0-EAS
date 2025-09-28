@@ -1,30 +1,17 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Phone } from "lucide-react"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   return (
-    <nav
-      className={`fixed top-12 w-full z-50 transition-all duration-500 ease-out ${
-        scrolled ? "bg-background/95 backdrop-blur-md border-b border-border shadow-lg" : "bg-transparent"
-      }`}
-    >
+    <nav className="relative w-full z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 justify-between items-center my-7">
+        <div className="flex h-16 justify-between items-center text-black opacity-100 bg-transparent rounded-3xl">
           <Link href="/" className="flex items-center group">
             <div className="relative overflow-hidden rounded-lg">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
@@ -32,9 +19,9 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
             <Button
-              className="relative overflow-hidden group px-6 py-2 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in"
+              className="relative overflow-hidden group px-4 lg:px-6 py-2 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in text-xs lg:text-sm"
               variant="ghost"
               size="sm"
               asChild
@@ -48,7 +35,7 @@ export function Navigation() {
             </Button>
 
             <Button
-              className="relative overflow-hidden group px-6 py-2 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in delay-100"
+              className="relative overflow-hidden group px-4 lg:px-6 py-2 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in delay-100 text-xs lg:text-sm"
               variant="ghost"
               size="sm"
               asChild
@@ -62,7 +49,7 @@ export function Navigation() {
             </Button>
 
             <Button
-              className="relative overflow-hidden group px-6 py-2 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in delay-200"
+              className="relative overflow-hidden group px-4 lg:px-6 py-2 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in delay-200 text-xs lg:text-sm"
               variant="ghost"
               size="sm"
               asChild
@@ -77,7 +64,7 @@ export function Navigation() {
 
             <Button
               size="sm"
-              className="relative overflow-hidden group bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-6 py-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in delay-400 before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/0 before:via-white/20 before:to-white/0 before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700"
+              className="relative overflow-hidden group bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-4 lg:px-6 py-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in delay-400 before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/0 before:via-white/20 before:to-white/0 before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700 text-xs lg:text-sm"
               asChild
             >
               <Link href="/demo" className="relative z-10">
@@ -86,7 +73,7 @@ export function Navigation() {
             </Button>
           </div>
 
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="md:hidden flex items-center">
             <Button
               variant="ghost"
               size="sm"

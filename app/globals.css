@@ -43,11 +43,9 @@
   --sidebar-accent-foreground: oklch(0.3015 0.0572 282.4176);
   --sidebar-border: oklch(0.9115 0.0216 285.9625);
   --sidebar-ring: rgb(85, 54, 211);
-  /* Updated font variables to use Inter as fallback instead of Geist */
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", "Monaco", "Inconsolata", "Fira Code", "Droid Sans Mono", "Courier New",
-    monospace;
-  --font-serif: var(--font-source-serif-4), "Times New Roman", serif;
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-serif: "Source Serif 4", "Source Serif 4 Fallback";
   --shadow-x: 0px;
   --shadow-y: 1px;
   --shadow-blur: 2px;
@@ -102,12 +100,8 @@
   --font-sora: var(--font-sora);
   --font-space-grotesk: var(--font-space-grotesk);
   --font-inter: var(--font-inter);
-  --font-source-serif-4: var(--font-source-serif-4);
-  /* Updated font variables to use working fonts */
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", "Monaco", "Inconsolata", "Fira Code", "Droid Sans Mono", "Courier New",
-    monospace;
-  --font-serif: var(--font-source-serif-4), "Times New Roman", serif;
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -144,6 +138,7 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --font-serif: "Source Serif 4", "Source Serif 4 Fallback";
   /* computed shadow variables below - do not modify */
   --shadow-2xs: var(--shadow-x) var(--shadow-y)
     color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
