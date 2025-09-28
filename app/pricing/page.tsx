@@ -173,8 +173,8 @@ export default function PricingPage() {
           <span className="text-muted-foreground">/month</span>
         </div>
         <div className="text-sm text-muted-foreground">
-          <span className="line-through text-red-400">+ {plan.setup} retainer</span>
-          <span className="ml-2 text-primary font-medium">+ {plan.promoSetup} retainer</span>
+          
+          <span className="ml-2 text-primary font-medium">+ {plan.promoSetup} One Time Setup Fee</span>
         </div>
       </div>
 

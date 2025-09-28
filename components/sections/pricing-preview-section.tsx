@@ -51,7 +51,7 @@ export function PricingPreviewSection() {
   return (
     <section className="py-20 bg-muted/30">
       <div className="bg-primary text-primary-foreground py-3 text-center mb-16">
-        <p className="text-sm font-medium">🎉 Special Launch Offer — 90 Days at HALF PRICE!</p>
+        <p className="text-sm font-medium">Special Launch Offer — 90 Days at HALF PRICE!</p>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,8 +92,8 @@ export function PricingPreviewSection() {
                   <span className="text-muted-foreground">/month</span>
                 </div>
                 <div className="text-sm">
-                  <span className="line-through mr-2 text-red-400">+ {plan.setup}</span>
-                  <span className="text-primary font-medium">+ {plan.promoSetup} retainer</span>
+                  
+                  <span className="text-primary font-medium">+ {plan.promoSetup} One Time Setup Fee</span>
                 </div>
               </div>
 
