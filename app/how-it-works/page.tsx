@@ -119,27 +119,9 @@ export default function HowItWorksPage() {
       <Navigation />
 
       <main>
-        <section className="relative py-20 overflow-hidden">
-          {/* Animated background layers */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-background to-accent/6"></div>
-          <div className="absolute inset-0">
-            <div className="absolute top-0 left-0 w-full h-full">
-              <div className="absolute top-20 left-16 w-64 h-64 bg-primary/12 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute top-40 right-24 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-700"></div>
-              <div className="absolute bottom-32 left-1/4 w-72 h-72 bg-accent/8 rounded-full blur-3xl animate-pulse delay-1400"></div>
-            </div>
-          </div>
-
-          {/* Floating geometric elements */}
-          <div className="absolute inset-0 opacity-8">
-            <div className="absolute top-32 left-24 w-2 h-16 bg-primary/20 rotate-12 animate-float"></div>
-            <div className="absolute top-48 right-28 w-12 h-2 bg-secondary/20 rotate-45 animate-float delay-300"></div>
-            <div className="absolute top-64 left-1/3 w-8 h-8 border-2 border-accent/20 rotate-45 animate-float delay-600"></div>
-            <div className="absolute top-80 right-1/3 w-6 h-6 bg-primary/15 rounded-full animate-float delay-900"></div>
-            <div className="absolute bottom-40 left-20 w-4 h-12 bg-secondary/15 rotate-30 animate-float delay-1200"></div>
-          </div>
-
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <section className="py-20 bg-gradient-to-br from-background to-muted/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-48 py-14">
               <h1 className="font-sora font-bold text-4xl lg:text-6xl text-foreground mb-6">How Our Voice AI Works</h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">

@@ -200,155 +200,137 @@ export default function PricingPage() {
       <Navigation />
 
       {/* Header */}
-      <div className="relative overflow-hidden">
-        {/* Animated background gradients */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5"></div>
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-32 right-20 w-96 h-96 bg-secondary/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-accent/6 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        <div className="text-center mb-16">
+          <h1 className="font-sora font-bold text-4xl lg:text-5xl mb-4">Plans and Pricing</h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto my-auto py-0.5">
+            Choose the perfect plan for your business needs and start transforming your sales process with AI
+            automation.
+          </p>
         </div>
 
-        {/* Geometric pattern overlay */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-4 h-4 bg-primary rotate-45 animate-spin-slow"></div>
-          <div className="absolute top-40 right-32 w-6 h-6 bg-secondary rotate-45 animate-spin-slow delay-500"></div>
-          <div className="absolute top-60 left-1/2 w-3 h-3 bg-accent rotate-45 animate-spin-slow delay-1000"></div>
-          <div className="absolute top-80 right-1/4 w-5 h-5 bg-primary rotate-45 animate-spin-slow delay-1500"></div>
-        </div>
+        {/* Bundled Plans */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="font-sora font-bold text-3xl mb-4">Bundled (Outbound + Inbound)</h2>
+            <p className="text-muted-foreground">Complete AI sales automation solution</p>
+          </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-          <div className="text-center mb-16">
-            <h1 className="font-sora font-bold text-4xl lg:text-5xl mb-4">Plans and Pricing</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto my-auto py-0.5">
-              Choose the perfect plan for your business needs and start transforming your sales process with AI
-              automation.
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {bundledPlans.map((plan, index) => (
+              <PlanCard key={index} plan={plan} />
+            ))}
+          </div>
+        </section>
+
+        {/* Outbound-Only Plans */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="font-sora font-bold text-3xl mb-4">Outbound-Only</h2>
+            <p className="text-muted-foreground">Focus on cold outreach and lead generation</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {outboundPlans.map((plan, index) => (
+              <PlanCard key={index} plan={plan} />
+            ))}
+          </div>
+        </section>
+
+        {/* Inbound-Only Plans */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="font-sora font-bold text-3xl mb-4">Inbound-Only</h2>
+            <p className="text-muted-foreground">
+              Handle incoming calls with AI precision. Call (980) 458-9699 for inbound demos.
             </p>
           </div>
 
-          {/* Bundled Plans */}
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="font-sora font-bold text-3xl mb-4">Bundled (Outbound + Inbound)</h2>
-              <p className="text-muted-foreground">Complete AI sales automation solution</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {inboundPlans.map((plan, index) => (
+              <PlanCard key={index} plan={plan} />
+            ))}
+          </div>
+        </section>
+
+        {/* Automation-Only Plans */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="font-sora font-bold text-3xl mb-4">Automation-Only (No Voice)</h2>
+            <p className="text-muted-foreground">Custom workflow automation without calling features</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {automationPlans.map((plan, index) => (
+              <PlanCard key={index} plan={plan} />
+            ))}
+          </div>
+        </section>
+
+        {/* Enterprise */}
+        <section className="mb-20">
+          <div className="card max-w-4xl mx-auto text-center">
+            <h2 className="font-sora font-bold text-3xl mb-4">Enterprise</h2>
+            <p className="text-muted-foreground mb-6">
+              For large companies that require additional security and custom solutions.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <ul className="space-y-3 text-left">
+                <li className="flex items-start space-x-3">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Custom pricing with promotional discount applied</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Unlimited calling minutes</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Priority access and dedicated support</span>
+                </li>
+              </ul>
+              <ul className="space-y-3 text-left">
+                <li className="flex items-start space-x-3">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Advanced security features</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Custom integrations and workflows</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Dedicated customer success manager</span>
+                </li>
+              </ul>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {bundledPlans.map((plan, index) => (
-                <PlanCard key={index} plan={plan} />
-              ))}
+            <Button size="lg">Contact Sales</Button>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="text-center">
+          <div className="card max-w-2xl mx-auto border-slate-400 rounded-4xl">
+            <h2 className="font-sora font-bold text-2xl mb-4">Ready to Get Started?</h2>
+            <p className="text-muted-foreground mb-6">
+              Choose your plan and start transforming your sales process with AI automation today.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                variant="default"
+                size="lg"
+                className="btn-primary font-extrabold text-xl text-transparent bg-transparent opacity-100 rounded-4xl shadow"
+              >
+                {"90 Days Starts Here"}
+              </Button>
+              <Button variant="outline" size="lg">
+                Schedule Demo
+              </Button>
             </div>
-          </section>
-
-          {/* Outbound-Only Plans */}
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="font-sora font-bold text-3xl mb-4">Outbound-Only</h2>
-              <p className="text-muted-foreground">Focus on cold outreach and lead generation</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {outboundPlans.map((plan, index) => (
-                <PlanCard key={index} plan={plan} />
-              ))}
-            </div>
-          </section>
-
-          {/* Inbound-Only Plans */}
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="font-sora font-bold text-3xl mb-4">Inbound-Only</h2>
-              <p className="text-muted-foreground">
-                Handle incoming calls with AI precision. Call (980) 458-9699 for inbound demos.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {inboundPlans.map((plan, index) => (
-                <PlanCard key={index} plan={plan} />
-              ))}
-            </div>
-          </section>
-
-          {/* Automation-Only Plans */}
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="font-sora font-bold text-3xl mb-4">Automation-Only (No Voice)</h2>
-              <p className="text-muted-foreground">Custom workflow automation without calling features</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {automationPlans.map((plan, index) => (
-                <PlanCard key={index} plan={plan} />
-              ))}
-            </div>
-          </section>
-
-          {/* Enterprise */}
-          <section className="mb-20">
-            <div className="card max-w-4xl mx-auto text-center">
-              <h2 className="font-sora font-bold text-3xl mb-4">Enterprise</h2>
-              <p className="text-muted-foreground mb-6">
-                For large companies that require additional security and custom solutions.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <ul className="space-y-3 text-left">
-                  <li className="flex items-start space-x-3">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Custom pricing with promotional discount applied</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Unlimited calling minutes</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Priority access and dedicated support</span>
-                  </li>
-                </ul>
-                <ul className="space-y-3 text-left">
-                  <li className="flex items-start space-x-3">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Advanced security features</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Custom integrations and workflows</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Dedicated customer success manager</span>
-                  </li>
-                </ul>
-              </div>
-
-              <Button size="lg">Contact Sales</Button>
-            </div>
-          </section>
-
-          {/* CTA Section */}
-          <section className="text-center">
-            <div className="card max-w-2xl mx-auto border-slate-400 rounded-4xl">
-              <h2 className="font-sora font-bold text-2xl mb-4">Ready to Get Started?</h2>
-              <p className="text-muted-foreground mb-6">
-                Choose your plan and start transforming your sales process with AI automation today.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  variant="default"
-                  size="lg"
-                  className="btn-primary font-extrabold text-xl text-transparent bg-transparent opacity-100 rounded-4xl shadow"
-                >
-                  {"90 Days Starts Here"}
-                </Button>
-                <Button variant="outline" size="lg">
-                  Schedule Demo
-                </Button>
-              </div>
-            </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
     </div>
   )
