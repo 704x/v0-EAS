@@ -18,9 +18,10 @@ import {
 import { Acme as V0_Font_Acme, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
 import { Acme as V0_Font_Acme, Fjalla_One as V0_Font_Fjalla_One, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
 import { Acme as V0_Font_Acme, Assistant as V0_Font_Assistant, Signika as V0_Font_Signika } from 'next/font/google'
+import { Dosis as V0_Font_Dosis, Assistant as V0_Font_Assistant, Signika as V0_Font_Signika } from 'next/font/google'
 
 // Initialize fonts
-V0_Font_Acme({ weight: ["400"] })
+V0_Font_Dosis({ weight: ["200","300","400","500","600","700","800"] })
 V0_Font_Assistant({ weight: ["200","300","400","500","600","700","800"] })
 V0_Font_Signika({ weight: ["300","400","500","600","700"] })
 
