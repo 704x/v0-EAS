@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
-// Fonts from next/font/google
+// ✅ ONE font import block. No V0_Font_* aliases.
 import {
   Geist,
   Geist_Mono,
@@ -15,56 +15,47 @@ import {
   Sora,
   Source_Serif_4,
 } from "next/font/google";
-import { Acme as V0_Font_Acme, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
-import { Acme as V0_Font_Acme, Fjalla_One as V0_Font_Fjalla_One, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
-import { Acme as V0_Font_Acme, Assistant as V0_Font_Assistant, Signika as V0_Font_Signika } from 'next/font/google'
-import { Dosis as V0_Font_Dosis, Assistant as V0_Font_Assistant, Signika as V0_Font_Signika } from 'next/font/google'
 
-// Initialize fonts
-V0_Font_Dosis({ weight: ["200","300","400","500","600","700","800"] })
-V0_Font_Assistant({ weight: ["200","300","400","500","600","700","800"] })
-V0_Font_Signika({ weight: ["300","400","500","600","700"] })
-
-// Initialize fonts once
+// ✅ ONE const per font. No bare calls.
 const geistSans = Geist({
   subsets: ["latin"],
   variable: "--font-geist-sans",
   display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["100","200","300","400","500","600","700","800","900"],
 });
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
   display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["100","200","300","400","500","600","700","800","900"],
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400","500","600","700"],
   display: "swap",
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400","500","600","700"],
   display: "swap",
 });
 
 const sora = Sora({
   subsets: ["latin"],
   variable: "--font-sora",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400","500","600","700"],
   display: "swap",
 });
 
 const sourceSerif4 = Source_Serif_4({
   subsets: ["latin"],
   variable: "--font-source-serif-4",
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["200","300","400","500","600","700","800","900"],
   display: "swap",
 });
 
@@ -109,7 +100,6 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       className={[
-        // font variables
         geistSans.variable,
         geistMono.variable,
         inter.variable,
