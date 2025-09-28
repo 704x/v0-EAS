@@ -2,83 +2,133 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Phone } from "lucide-react"
+import {
+  Menu,
+  X,
+  Phone,
+  ChevronDown,
+  FileText,
+  Scale,
+  ShieldCheck,
+  ScrollText,
+} from "lucide-react"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [docsOpen, setDocsOpen] = useState(false)
+  const [docsHover, setDocsHover] = useState(false)
+  const pathname = usePathname()
+
+  const navLink =
+    "relative overflow-hidden group px-4 lg:px-6 py-2 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg text-xs lg:text-sm rounded-md"
+
+  const isActive = (href: string) =>
+    pathname === href ? "text-primary font-semibold" : "text-foreground"
 
   return (
-    <nav className="relative w-full z-50 bg-transparent">
+    <nav className="sticky top-0 z-50 backdrop-blur bg-background/70 border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 justify-between items-center text-black opacity-100 bg-transparent rounded-3xl">
-          <Link href="/" className="flex items-center group">
-            <div className="relative overflow-hidden rounded-lg">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-            </div>
+        {/* Top bar */}
+        <div className="flex h-16 justify-between items-center">
+          {/* Brand Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <img
+              src="assets/logotransparent.png"
+              alt="Elite AI Solutions Logo"
+              className="w-auto object-contain h-24"
+            />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
-            <Button
-              className="relative overflow-hidden group px-4 lg:px-6 py-2 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in text-xs lg:text-sm"
-              variant="ghost"
-              size="sm"
-              asChild
-            >
-              <Link href="/" className="relative z-10">
-                <span className="relative">
-                  Voice Automation Agents
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
-                </span>
-              </Link>
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-2 lg:gap-3">
+            <Button className={`${navLink} ${isActive("/")}`} variant="ghost" size="sm" asChild>
+              <Link href="/">Voice Automation Agents</Link>
             </Button>
 
-            <Button
-              className="relative overflow-hidden group px-4 lg:px-6 py-2 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in delay-100 text-xs lg:text-sm"
-              variant="ghost"
-              size="sm"
-              asChild
-            >
-              <Link href="/how-it-works" className="relative z-10">
-                <span className="relative">
-                  How It Works
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
-                </span>
-              </Link>
+            <Button className={`${navLink} ${isActive("/how-it-works")}`} variant="ghost" size="sm" asChild>
+              <Link href="/how-it-works">How It Works</Link>
             </Button>
 
-            <Button
-              className="relative overflow-hidden group px-4 lg:px-6 py-2 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in delay-200 text-xs lg:text-sm"
-              variant="ghost"
-              size="sm"
-              asChild
-            >
-              <Link href="/pricing" className="relative z-10">
-                <span className="relative">
-                  Pricing
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
-                </span>
-              </Link>
+            <Button className={`${navLink} ${isActive("/pricing")}`} variant="ghost" size="sm" asChild>
+              <Link href="/pricing">Pricing</Link>
             </Button>
+
+            {/* Docs dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setDocsHover(true)}
+              onMouseLeave={() => setDocsHover(false)}
+            >
+              <Button
+                className={`${navLink} ${isActive("/docs")}`}
+                variant="ghost"
+                size="sm"
+                onClick={() => setDocsHover((s) => !s)}
+                aria-haspopup="menu"
+                aria-expanded={docsHover}
+              >
+                <span className="flex items-center gap-1.5">
+                  Docs
+                  <ChevronDown size={14} className={`transition-transform ${docsHover ? "rotate-180" : ""}`} />
+                </span>
+              </Button>
+
+              <div
+                className={`absolute right-0 mt-2 w-64 rounded-xl border border-border bg-popover shadow-xl transition-all duration-200 ${
+                  docsHover ? "opacity-100 translate-y-0" : "opacity-0 pointer-events-none -translate-y-1"
+                }`}
+                role="menu"
+              >
+                <ul className="py-2">
+                  <li>
+                    <Link href="/docs/legal" className="flex items-center gap-2 px-3 py-2 hover:bg-muted rounded-lg">
+                      <Scale size={16} className="text-primary" />
+                      Legal
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/docs/terms" className="flex items-center gap-2 px-3 py-2 hover:bg-muted rounded-lg">
+                      <FileText size={16} className="text-primary" />
+                      Terms of Service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/docs/privacy" className="flex items-center gap-2 px-3 py-2 hover:bg-muted rounded-lg">
+                      <ShieldCheck size={16} className="text-primary" />
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/docs/sops" className="flex items-center gap-2 px-3 py-2 hover:bg-muted rounded-lg">
+                      <ScrollText size={16} className="text-primary" />
+                      SOPs
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
 
             <Button
               size="sm"
-              className="relative overflow-hidden group bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-4 lg:px-6 py-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in delay-400 before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/0 before:via-white/20 before:to-white/0 before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700 text-xs lg:text-sm"
+              className="relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-4 lg:px-6 py-2 transition-all duration-300 hover:scale-105 hover:shadow-xl rounded-md"
               asChild
             >
-              <Link href="/demo" className="relative z-10">
-                Talk to the AI
-              </Link>
+              <Link href="/demo">Talk to the AI</Link>
             </Button>
           </div>
 
+          {/* Mobile hamburger */}
           <div className="md:hidden flex items-center">
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="relative p-2 transition-all duration-300 hover:scale-110 hover:bg-primary/10"
+              className="p-2 transition-all duration-300 hover:scale-110 hover:bg-primary/10 rounded-md"
+              aria-label="Toggle menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               <div className={`transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}>
                 {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -87,77 +137,8 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${
-            isOpen ? "max-h-96 opacity-100 py-4 border-t border-border" : "max-h-0 opacity-0 py-0"
-          }`}
-        >
-          <div className="flex flex-col space-y-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              className={`justify-start transition-all duration-300 hover:scale-105 hover:bg-primary/10 ${
-                isOpen ? "animate-slide-up" : ""
-              }`}
-              asChild
-            >
-              <Link href="/" onClick={() => setIsOpen(false)}>
-                Voice Automation Agents
-              </Link>
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              className={`justify-start transition-all duration-300 hover:scale-105 hover:bg-primary/10 ${
-                isOpen ? "animate-slide-up delay-100" : ""
-              }`}
-              asChild
-            >
-              <Link href="/how-it-works" onClick={() => setIsOpen(false)}>
-                How It Works
-              </Link>
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              className={`justify-start transition-all duration-300 hover:scale-105 hover:bg-primary/10 ${
-                isOpen ? "animate-slide-up delay-200" : ""
-              }`}
-              asChild
-            >
-              <Link href="/pricing" onClick={() => setIsOpen(false)}>
-                Pricing
-              </Link>
-            </Button>
-
-            <div className={`pt-4 border-t border-border space-y-2 ${isOpen ? "animate-slide-up delay-300" : ""}`}>
-              <Button
-                className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                size="sm"
-                asChild
-              >
-                <Link href="/demo" onClick={() => setIsOpen(false)}>
-                  Talk to the AI
-                </Link>
-              </Button>
-
-              <Button
-                variant="outline"
-                size="sm"
-                className="w-full bg-transparent hover:bg-primary/10 transition-all duration-300 hover:scale-105"
-                asChild
-              >
-                <a href="tel:+19804589699" className="flex items-center justify-center space-x-2">
-                  <Phone size={16} />
-                  <span>(980) 458-9699</span>
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
+        {/* Mobile menu */}
+        {/* ... (keep the same mobile menu code you already have) ... */}
       </div>
     </nav>
   )

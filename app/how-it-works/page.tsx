@@ -123,26 +123,55 @@ export default function HowItWorksPage() {
         <section className="py-20 bg-gradient-to-br from-background to-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-48 py-14">
-              <h1 className="font-sora font-bold text-4xl lg:text-6xl text-foreground mb-6">How Our Voice AI Works</h1>
+              <h1 className="font-sora font-bold text-4xl lg:text-6xl text-foreground mb-6">
+                How Our Voice AI Works
+              </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                 From target list to booked appointment—voice AI handles the calls and the follow-ups with human-like
                 conversations that convert.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="text-lg px-8">
-                  Book Live Demo
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 bg-transparent">
-                  <PlayCircle className="w-5 h-5 mr-2" />
-                  Watch Demo Video
-                </Button>
+
+              {/* CTA label + buttons */}
+              <div className="flex flex-col sm:flex-row gap-8 justify-center">
+
+                {/* Sales Agent */}
+                <div className="flex flex-col items-center" role="group" aria-label="Sales Agent demo">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Users className="w-4 h-4 text-secondary-foreground" aria-hidden="true" />
+                    <span className="text-xs font-semibold text-secondary-foreground">Sales Agent</span>
+                  </div>
+                  <Button
+                    size="lg"
+                    className="px-8 mx-1.5 tracking-wide leading-4 text-center border-4 py-3.5 my-1 rounded-2xl"
+                    aria-label="Book Live Demo - Cold Call (Sales Agent)"
+                  >
+                    Book Live Demo Cold Call
+                  </Button>
+                </div>
+
+                {/* Personal Assistant */}
+                <div className="flex flex-col items-center" role="group" aria-label="Personal Assistant demo">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Phone className="w-4 h-4 text-secondary-foreground" aria-hidden="true" />
+                    <span className="text-xs font-semibold text-secondary-foreground">Personal Assistant</span>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="font-bold my-1 py-0 text-left border-secondary-foreground border-solid shadow-xl tracking-tighter text-secondary-foreground bg-slate-200 rounded-xl text-sm border px-3.5"
+                    aria-label="Book Live Demo - Incoming Calls (Personal Assistant)"
+                  >
+                    Book Live Demo Incoming Calls
+                  </Button>
+                </div>
+
               </div>
             </div>
 
             <div className="flex justify-center">
               <div className="relative max-w-4xl w-full">
                 <img
-                  src="/images/lead-pipeline-3d.png"
+                  src=" /images/lead-pipeline-3d.png"
                   alt="3D visualization of lead progression pipeline showing New Lead to Contacted to Engaged flow with floating profile cards"
                   className="w-full h-auto shadow-2xl border-solid rounded-4xl shadow"
                 />
@@ -218,7 +247,9 @@ export default function HowItWorksPage() {
                 {callFlow.map((exchange, index) => (
                   <div key={index} className={`flex ${exchange.speaker === "AI" ? "justify-start" : "justify-end"}`}>
                     <div
-                      className={`max-w-3xl ${exchange.speaker === "AI" ? "bg-primary/10" : "bg-muted"} rounded-lg p-4`}
+                      className={`max-w-3xl ${
+                        exchange.speaker === "AI" ? "bg-primary/10" : "bg-muted"
+                      } rounded-lg p-4`}
                     >
                       <div className="flex items-center mb-2">
                         <div

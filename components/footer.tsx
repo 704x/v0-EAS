@@ -10,13 +10,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <Image
-                src="/assets/easlogotrans.png"
-                alt="Elite AI Solutions"
-                width={160}
-                height={32}
-                className="h-8 w-auto"
-              />
+              
               <span className="font-space-grotesk font-bold text-lg" style={{ color: "var(--eas-navy)" }}>
                 Elite AI Solutions
               </span>
