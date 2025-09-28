@@ -1,57 +1,63 @@
-import type React from "react"
-import type { Metadata } from "next"
+import type React from "react";
+import type { Metadata } from "next";
 
-import { Space_Grotesk } from "next/font/google"
-import { Inter } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import { Suspense } from "react"
-import { ThemeProvider } from "@/components/theme-provider"
-import "./globals.css"
-import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "@/components/theme-provider";
+import "./globals.css";
 
+// Fonts from next/font/google
+import {
+  Geist,
+  Geist_Mono,
+  Inter,
+  Space_Grotesk,
+  Sora,
+  Source_Serif_4,
+} from "next/font/google";
+
+// Initialize fonts once
 const geistSans = Geist({
   subsets: ["latin"],
   variable: "--font-geist-sans",
   display: "swap",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
   display: "swap",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
-
-// Initialize fonts
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-})
-const geist = Geist({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-})
-const sourceSerif4 = Source_Serif_4({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
-})
-
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  weight: ["400", "500", "600", "700"],
-})
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  weight: ["400", "500", "600", "700"],
-})
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["400", "500", "600", "700"],
-})
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const sourceSerif4 = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--font-source-serif-4",
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "AI Cold-Calling for Real Estate | Elite AI Solutions",
@@ -62,7 +68,8 @@ export const metadata: Metadata = {
     "AI cold caller real estate, FSBO cold calling AI, expired listing AI caller, AI ISA, AI receptionist real estate, never miss a lead",
   openGraph: {
     title: "AI Cold-Calling for Real Estate | Elite AI Solutions",
-    description: "Human-sounding AI that cold-calls FSBO/Expired leads and answers inbound 24/7.",
+    description:
+      "Human-sounding AI that cold-calls FSBO/Expired leads and answers inbound 24/7.",
     url: "https://www.eliteaisolutions.xyz",
     siteName: "Elite AI Solutions",
     images: [
@@ -79,22 +86,29 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Cold-Calling for Real Estate | Elite AI Solutions",
-    description: "Human-sounding AI that cold-calls FSBO/Expired leads and answers inbound 24/7.",
+    description:
+      "Human-sounding AI that cold-calls FSBO/Expired leads and answers inbound 24/7.",
     images: ["/assets/easlogotrans.png"],
   },
-}
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${sora.variable} ${spaceGrotesk.variable} ${inter.variable}{geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
-    
-    
-
-
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={[
+        // font variables
+        geistSans.variable,
+        geistMono.variable,
+        inter.variable,
+        spaceGrotesk.variable,
+        sora.variable,
+        sourceSerif4.variable,
+      ].join(" ")}
+    >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/assets/logotransparent.png" type="image/png" />
@@ -109,8 +123,11 @@ export default function RootLayout({
                   "@id": "https://www.eliteaisolutions.xyz/#org",
                   name: "Elite AI Solutions",
                   url: "https://www.eliteaisolutions.xyz",
-                  logo: "https://www.eliteaisolutions.xyz/assets/easlogotrans.png",
-                  sameAs: ["https://www.linkedin.com/company/eliteaisolutions"],
+                  logo:
+                    "https://www.eliteaisolutions.xyz/assets/easlogotrans.png",
+                  sameAs: [
+                    "https://www.linkedin.com/company/eliteaisolutions",
+                  ],
                   contactPoint: [
                     {
                       "@type": "ContactPoint",
@@ -127,19 +144,33 @@ export default function RootLayout({
                   url: "https://www.eliteaisolutions.xyz",
                   name: "Elite AI Solutions",
                   inLanguage: "en",
-                  publisher: { "@id": "https://www.eliteaisolutions.xyz/#org" },
+                  publisher: {
+                    "@id": "https://www.eliteaisolutions.xyz/#org",
+                  },
                   potentialAction: [
-                    { "@type": "Action", name: "Call for a Demo", target: "tel:+19804589699" },
-                    { "@type": "Action", name: "Start AI Demo Call", target: "https://www.eliteaisolutions.xyz/demo" },
+                    {
+                      "@type": "Action",
+                      name: "Call for a Demo",
+                      target: "tel:+19804589699",
+                    },
+                    {
+                      "@type": "Action",
+                      name: "Start AI Demo Call",
+                      target: "https://www.eliteaisolutions.xyz/demo",
+                    },
                   ],
                 },
                 {
                   "@type": "Service",
                   "@id": "https://www.eliteaisolutions.xyz/#service",
-                  name: "Voice AI for Real Estate — Outbound Cold-Calling & Inbound Answering",
-                  provider: { "@id": "https://www.eliteaisolutions.xyz/#org" },
+                  name:
+                    "Voice AI for Real Estate — Outbound Cold-Calling & Inbound Answering",
+                  provider: {
+                    "@id": "https://www.eliteaisolutions.xyz/#org",
+                  },
                   areaServed: "US",
-                  serviceType: "AI cold calling, AI receptionist, CRM automation",
+                  serviceType:
+                    "AI cold calling, AI receptionist, CRM automation",
                   isSimilarTo: [
                     "AI ISA for real estate",
                     "FSBO & Expired listing outreach",
@@ -184,7 +215,8 @@ export default function RootLayout({
                       name: "How fast do you respond to new leads?",
                       acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Inbound calls are answered instantly; outbound demo calls start within ~30 seconds of form submission.",
+                        text:
+                          "Inbound calls are answered instantly; outbound demo calls start within ~30 seconds of form submission.",
                       },
                     },
                     {
@@ -192,7 +224,8 @@ export default function RootLayout({
                       name: "Do you store call audio?",
                       acceptedAnswer: {
                         "@type": "Answer",
-                        text: "No. Calls are transcribed in real time; transcripts are retained for 90 days, then auto-deleted.",
+                        text:
+                          "No. Calls are transcribed in real time; transcripts are retained for 90 days, then auto-deleted.",
                       },
                     },
                     {
@@ -200,15 +233,18 @@ export default function RootLayout({
                       name: "How do I try the AI?",
                       acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Submit your number to trigger a live outbound demo call, or call the inbound demo line at (980) 458-9699.",
+                        text:
+                          "Submit your number to trigger a live outbound demo call, or call the inbound demo line at (980) 458-9699.",
                       },
                     },
                     {
                       "@type": "Question",
-                      name: "Which CRMs and tools are supported?",
+                      name:
+                        "Which CRMs and tools are supported?",
                       acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Native integration with GoHighLevel; connections to Google Calendar and Google Sheets.",
+                        text:
+                          "Native integration with GoHighLevel; connections to Google Calendar and Google Sheets.",
                       },
                     },
                     {
@@ -216,7 +252,8 @@ export default function RootLayout({
                       name: "Is it compliant?",
                       acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Yes. TCPA/DNC aligned, quiet hours honored, A2P 10DLC registered, and STIR/SHAKEN signed. Transcription-only retention.",
+                        text:
+                          "Yes. TCPA/DNC aligned, quiet hours honored, A2P 10DLC registered, and STIR/SHAKEN signed. Transcription-only retention.",
                       },
                     },
                     {
@@ -224,7 +261,8 @@ export default function RootLayout({
                       name: "What happens during the demo call?",
                       acceptedAnswer: {
                         "@type": "Answer",
-                        text: "The AI runs a short qualification, can handle interruptions, and offers to book a sample appointment into a sandbox calendar.",
+                        text:
+                          "The AI runs a short qualification, can handle interruptions, and offers to book a sample appointment into a sandbox calendar.",
                       },
                     },
                   ],
@@ -234,12 +272,17 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-inter antialiased bg-background text-foreground">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+      <body className="antialiased bg-background text-foreground">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Suspense fallback={null}>{children}</Suspense>
         </ThemeProvider>
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
